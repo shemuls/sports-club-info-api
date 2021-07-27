@@ -1,0 +1,20 @@
+.leagueItem {
+  height: 250px;
+  background-position: center center;
+  background-size: cover;
+}
+.blur {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.leagueItem:hover .blur {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.leagueItem:hover {
+  transform: scale(1.1);
+  transition: 0.6s;
+}

@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { shuffle } from "../../utilities/CustomFunction.js";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { League } from "../League/League.jsx";
+import { useHistory } from "react-router-dom";
 
 export const AllLeagues = () => {
   const [allLeagues, setAllLeagues] = useState([]);
+
   useEffect(() => {
     const url = "https://www.thesportsdb.com/api/v1/json/1/all_leagues.php";
     fetch(url)
@@ -18,12 +20,22 @@ export const AllLeagues = () => {
       });
   }, []);
 
+  const getHistory = useHistory();
+  const viewLeagueHandle = (leagueId) => {
+    getHistory.push("/league/" + leagueId);
+    console.log(leagueId);
+  };
+
   return (
     <div className="container">
       <div className="row mt-5">
         {allLeagues.length ? (
           allLeagues.map((singleLeague) => (
-            <League singleLeague={singleLeague} />
+            <League
+              key={singleLeague.idLeague}
+              singleLeague={singleLeague}
+              viewLeagueHandle={viewLeagueHandle}
+            />
           ))
         ) : (
           <LinearProgress />

@@ -1,9 +1,10 @@
 .hearoArea {
-  height: 75vh;
+  height: 70vh;
   background-position: center center;
   background-size: cover;
 }
 .blur {
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
+  width: 100%;
 }
