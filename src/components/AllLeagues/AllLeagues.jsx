@@ -1,12 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { shuffle } from "../../utilities/CustomFunction.js";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { League } from "../League/League.jsx";
 import { useHistory } from "react-router-dom";
+import { SportLeagueContext } from "../../App.js";
 
 export const AllLeagues = () => {
-  const [allLeagues, setAllLeagues] = useState([]);
+  // const [allLeagues, setAllLeagues] = useState([]);
+  const { allLeagues, setAllLeagues } = useContext(SportLeagueContext);
 
   useEffect(() => {
     const url = "https://www.thesportsdb.com/api/v1/json/1/all_leagues.php";
