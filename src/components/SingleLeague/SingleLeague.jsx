@@ -2,7 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Banner } from "../Banner/Banner.jsx";
-import heroImage from "../../assets/images/football.jpg";
+import football from "../../assets/images/football.jpg";
+import Basketball from "../../assets/images/Basketball.jpg";
+import Fighting from "../../assets/images/Fighting.jpg";
+import Volleyball from "../../assets/images/Volleyball.jpg";
+import tableTennis from "../../assets/images/Table Tennis.jpg";
+import Golf from "../../assets/images/Golf.jpg";
 import classes from "./SingleLeague.module.css";
 
 export const SingleLeague = () => {
@@ -17,11 +22,32 @@ export const SingleLeague = () => {
   }, [leagueId]);
 
   console.log(singleLeague);
+  let bg = singleLeague.strFanart1;
+  if (singleLeague.strSport === "Soccer") {
+    bg = football;
+  } else if (singleLeague.strSport === "Basketball") {
+    bg = Basketball;
+  } else if (singleLeague.strSport === "Fighting") {
+    bg = singleLeague.strFanart1;
+  } else if (singleLeague.strSport === "Volleyball") {
+    bg = Volleyball;
+  } else if (singleLeague.strSport === "Table Tennis") {
+    bg = tableTennis;
+  } else if (singleLeague.strSport === "Golf") {
+    bg = Golf;
+  } else {
+    bg = singleLeague.strFanart1;
+  }
 
   return (
     <div>
-      <Banner bg={heroImage}>
+      <Banner bg={bg}>
         <div className="col">
+          <img
+            className={classes.imgHeight}
+            src={singleLeague.strTrophy}
+            alt={singleLeague.strTrophy}
+          />
           <h2 className="mb-4 display-4 text-light">
             {singleLeague.strLeague}
           </h2>
@@ -32,7 +58,7 @@ export const SingleLeague = () => {
             This league for <strong> {singleLeague.strGender}</strong>
           </h6>
           <h6 className="text-light">
-            <strong>Country </strong> {singleLeague.strCountry}
+            <strong>Country: </strong> {singleLeague.strCountry}
           </h6>
         </div>
       </Banner>

@@ -30,7 +30,7 @@ export const AllLeagues = () => {
 
   return (
     <div className="container">
-      <div className="row mt-5">
+      <div id="league-item" className="row mt-5">
         {allLeagues.length ? (
           allLeagues.map((singleLeague) => (
             <League
